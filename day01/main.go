@@ -64,5 +64,6 @@ func toCalories(caloriesLog []string) []int {
 		}
 	}
 
+	calories = append(calories, current)
 	return calories
 }
