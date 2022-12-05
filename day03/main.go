@@ -10,7 +10,7 @@ type Item rune
 type Rucksack []Item
 
 func main() {
-	input, err := os.ReadFile("./day03/testInput.txt")
+	input, err := os.ReadFile("./day03/input.txt")
 	if err != nil {
 		panic(err)
 	}

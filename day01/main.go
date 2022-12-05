@@ -18,10 +18,10 @@ func main() {
 	caloriesLog := splitLines(input)
 
 	part1Answer := solvePart1(caloriesLog)
-	fmt.Printf("Part one answer: %d", part1Answer)
+	fmt.Printf("Part one answer: %d\n", part1Answer)
 
 	part2Answer := solvePart2(caloriesLog)
-	fmt.Printf("Part two answer: %d", part2Answer)
+	fmt.Printf("Part two answer: %d\n", part2Answer)
 }
 
 func solvePart2(caloriesLog []string) int {
