@@ -1,7 +1,7 @@
 package main
 
 import (
-	"adian.com/advent_of_code_2022/common/stack"
+	"adian.com/advent_of_code_2022/day05/stack"
 	"fmt"
 	"os"
 	"strconv"
