@@ -71,13 +71,13 @@ func Test_solvePart2(t *testing.T) {
 			},
 			want: 36,
 		},
-		//{
-		//	name: "with actual input",
-		//	args: args{
-		//		moves: parseMoves(readInputFile("./input.txt")),
-		//	},
-		//	want: 5930,
-		//},
+		{
+			name: "with actual input",
+			args: args{
+				moves: parseMoves(readInputFile("./input.txt")),
+			},
+			want: 2443,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
