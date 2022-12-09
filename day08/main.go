@@ -164,10 +164,10 @@ func generateTreeMap(raw []byte) TreeMap {
 	rows := strings.Split(string(raw), "\n")
 	length := len(rows)
 
-	tm := make([][]int, length, length)
+	tm := make([][]int, length)
 
 	for rowIndex, row := range rows {
-		tm[rowIndex] = make([]int, length, length)
+		tm[rowIndex] = make([]int, length)
 
 		columns := strings.Split(row, "")
 		for columnIndex, value := range columns {
