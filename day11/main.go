@@ -2,14 +2,14 @@ package main
 
 import (
 	"adian.com/advent_of_code_2022/day11/monkey"
-	"adian.com/advent_of_code_2022/day11/util"
+	"adian.com/advent_of_code_2022/utils"
 	"fmt"
 	"sort"
 )
 
 func main() {
 
-	lines := util.ReadFileLines("./day11/input.txt")
+	lines := utils.ReadFileLines("./day11/input.txt")
 
 	fmt.Printf("Part 1 answer: %v\n", solvePart1(lines))
 	fmt.Printf("Part 2 answer: \n%v", solvePart2(lines))

@@ -1,12 +1,12 @@
 package main
 
 import (
-	"adian.com/advent_of_code_2022/day11/util"
+	"adian.com/advent_of_code_2022/utils"
 	"testing"
 )
 
-var inputFromPuzzleDescription = util.ReadFileLines("input_test.txt")
-var actualInput = util.ReadFileLines("input.txt")
+var inputFromPuzzleDescription = utils.ReadFileLines("input_test.txt")
+var actualInput = utils.ReadFileLines("input.txt")
 
 func Test_solvePart1(t *testing.T) {
 	type args struct {

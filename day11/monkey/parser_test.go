@@ -1,13 +1,13 @@
 package monkey
 
 import (
-	"adian.com/advent_of_code_2022/day11/util"
+	"adian.com/advent_of_code_2022/utils"
 	"reflect"
 	"testing"
 )
 
 func Test_parseMonkeys(t *testing.T) {
-	lines := util.ReadFileLines("../input_test.txt")
+	lines := utils.ReadFileLines("../input_test.txt")
 	got := Parse(lines)
 
 	want := Monkeys{
