@@ -3,7 +3,7 @@ package main
 import (
 	"adian.com/advent_of_code_2022/utils"
 	"fmt"
-	"math"
+	"runtime"
 	"sort"
 	"sync"
 )
@@ -83,30 +83,32 @@ func filterBests(snapshots []*snapshot, maxSize int) []*snapshot {
 func nextMinute(snapshots []*snapshot) []*snapshot {
 	snapshots = increasePressure(snapshots)
 
-	input := make(chan *snapshot, len(snapshots))
-	defer close(input)
-	for _, snap := range snapshots {
-		input <- snap
-	}
+	input := make(chan *snapshot)
+	go func() {
+		for _, snap := range snapshots {
+			input <- snap
+		}
+		close(input)
+	}()
 
-	poolSize := int(
-		math.Min(float64(len(snapshots)), 75),
-	)
-	var wg sync.WaitGroup
-	wg.Add(len(snapshots))
+	output := make(chan []*snapshot)
 
-	output := make(chan []*snapshot, len(snapshots))
-	for i := 0; i < poolSize; i++ {
-		go func() {
-			for s := range input {
-				output <- processSnap(s)
-				wg.Done()
-			}
-		}()
-	}
+	go func() {
+		var wg sync.WaitGroup
+		wg.Add(len(snapshots))
+		poolSize := min(runtime.NumCPU()*4, len(snapshots))
+		for i := 0; i < poolSize; i++ {
+			go func() {
+				for s := range input {
+					output <- processSnap(s)
+					wg.Done()
+				}
+			}()
+		}
 
-	wg.Wait()
-	close(output)
+		wg.Wait()
+		close(output)
+	}()
 
 	var result []*snapshot
 	for out := range output {
@@ -114,6 +116,13 @@ func nextMinute(snapshots []*snapshot) []*snapshot {
 	}
 
 	return result
+}
+
+func min(a, b int) int {
+	if a > b {
+		return b
+	}
+	return a
 }
 
 func processSnap(snap *snapshot) []*snapshot {
