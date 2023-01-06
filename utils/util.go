@@ -2,6 +2,7 @@ package utils
 
 import (
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -17,4 +18,12 @@ func ReadFile(filepath string) string {
 	}
 	data := string(file)
 	return data
+}
+
+func ToInt(s string) int {
+	n, err := strconv.Atoi(s)
+	if err != nil {
+		panic(err)
+	}
+	return n
 }
