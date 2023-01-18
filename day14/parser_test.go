@@ -41,7 +41,7 @@ func Test_parseEdges(t *testing.T) {
 func Test_parse(t *testing.T) {
 	got := parse(inputFromDescription)
 
-	asserts.AssertEqual(t, len(got), 20)
+	asserts.Equal(t, len(got), 20)
 
 	want := map[point]bool{
 		point{494, 9}: true,

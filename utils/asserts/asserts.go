@@ -1,9 +1,19 @@
 package asserts
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
-func AssertEqual[T comparable](t *testing.T, got, want T) {
+func Equal[T comparable](t *testing.T, got, want T) {
 	if got != want {
+		t.Helper()
+		t.Errorf("got %#v, want %#v", got, want)
+	}
+}
+
+func DeepEqual[T any](t *testing.T, got, want T) {
+	if !reflect.DeepEqual(got, want) {
 		t.Helper()
 		t.Errorf("got %#v, want %#v", got, want)
 	}
